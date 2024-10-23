@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- product_detail.html -->
+
+<html>
+<body>
+    <div class="about_section layout_padding">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-6">
+                 <div class="about_taital_main">
+                    <div class="about_taital">{{pr.name}}</div>
+                    <p class="about_text">{{pr.desc}}</p>
+                    <p style="font-size: 18px; color: #fc0303;">Price: {{pr.price}} Rs </p>
+                    <p style="color: darkslategray;">stock:{{pr.stock}}</p>
+                    {% if pr.stock <= 0 %}
+                    <h1 style="color:#fc0303">Sorry! No stock left</h1>
+                    {% else %}
+                    <div class="read_bt"><a href="{% url 'addcart' pr.id %}">Buy Now</a></div>
+                    {% endif %}
+                 </div>
+              </div>
+              <div class="col-md-6">
+                 <div class="about_img"><img src="{{pr.img.url}}">
+                  <h2>{{pr.name}}</h2>
+                  </div>
+              </div>
+           </div>
+        </div>
+     </div>
+    <!-- Add other product details as needed -->
+    
+</body>
+</html>
+{% endblock %}

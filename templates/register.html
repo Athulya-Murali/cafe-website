@@ -1,0 +1,157 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+
+<html>
+  <head>
+    <title>SignUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        padding-top: 150px !important;
+      }
+
+      .signup-container {
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 15px; 
+        margin: 0; 
+        background-color: #f8f2f2;
+        display: flex;
+        flex-direction: column; 
+      }
+      .container {
+        max-width: 600px; 
+        padding: 10px;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        margin-top: 0;
+      }
+      h1 {
+        text-align: center;
+        background-color: #f0f8ff;
+        color: darkslategrey;
+        padding: 10px;
+        margin-top: 0; 
+      }
+      input[type="text"],
+      input[type="password"],
+      textarea {
+        width: calc(100% - 20px);
+        padding: 10px 8px;
+        margin: 8px 0 ;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        background: #f1f1f1;
+      }
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        background-color: rgb(255, 255, 255);
+        outline: none;
+      }
+      div {
+        padding: 10px 0;
+      }
+      hr {
+        border: 1px solid #ffffff;
+        margin-bottom: 25px ;
+      }
+      .registerbtn {
+        background-color: #46b2dd;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+      .registerbtn:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="signup-container">
+    <form>
+      <div class="container">
+        <h1 style="text-align: center; font-family: 'Lato', sans-serif; font-size: 24px; font-weight: bold;">REGISTER</h1>
+        <hr />
+        <label> Firstname </label>
+        <input
+          type="text"
+          name="firstname"
+          placeholder="Firstname"
+          size="15"
+          required
+        />
+        <label> Lastname: </label>
+        <input
+          type="text"
+          name="lastname"
+          placeholder="Lastname"
+          size="15"
+          required
+        />
+        <div>
+          <label>
+            Gender :
+            <br /> </label
+          ><br />
+          <input type="radio" value="Male" name="gender" checked /> Male
+          <input type="radio" value="Female" name="gender" /> Female
+          <input type="radio" value="Other" name="gender" /> Other
+        </div>
+          
+        <div>
+          <label for="phoneNumber">Phone:</label>
+          <div style="display: flex;">
+            <label for="Country Code"></label>
+            <input  
+              type="text"
+              name="CountryCode"
+              placeholder="Country Code"
+              value="+91"
+              size="2"
+              style="width: 40px;"
+              required
+            />
+            <input  
+              type="text"
+              name="phoneNumber"
+              placeholder="Phone Number"
+              size="10"
+              required
+            />
+          </div>
+        </div>
+        
+        Current Address :
+        <textarea
+          cols="80"
+          rows="5"
+          placeholder="Current Address"
+          value="address"
+          required
+        ></textarea>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required />
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          required
+        />
+        <label for="psw-repeat"><b>Re-type Password</b></label>
+        <input
+          type="password"
+          placeholder="Retype Password"
+          name="psw-repeat"
+          required
+        />
+        <button type="submit" class="registerbtn">Register</button>
+      </div>
+    </form>
+  </body>
+</html>
+{% endblock %}

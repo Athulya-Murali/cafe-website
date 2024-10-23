@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+   <body>
+      <title>Luscious Cafe-Menu</title>
+      <!-- gallery section start -->
+      <div class="gallery_section layout_padding">
+         <div class="container"> 
+            <div class="row">
+               <div class="col-sm-12">
+                  <h1 class="gallery_taital">Our Menu</h1>
+                  <p class="gallery_text"><b>Indulge in our freshly brewed coffee, homemade pastries, and delightful breakfast options to start your day off right.</b></p>
+               </div>
+            </div>
+            <!-- opem -->
+                        <!-- Display Categories -->
+            <div class="row">
+               {% for category in categories %}
+               <div class="col-md-3">
+                  <div class="card custom-card"style="margin-top: 20px;">
+                     <div class="card-body">
+                        <a href="{% url 'gallery_category' category.slug %}">
+                           <h5 class="card-title">{{ category.name }}</h5>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+
+            <!-- Display Selected Category (if any) -->
+            {% if selected_category %}
+               <h2><b>{{ selected_category.name }}</b></h2>
+            {% endif %}
+
+            <!-- Display Products -->
+            <div class="row">
+               <div class="gallery_section_2">
+                  <div class="row">
+                     {% for i in pr %}
+                     <div class="col-md-4">
+                        <div class="container_main">
+                           <img src="{{i.img.url}}" alt="Avatar" class="image" style="width: 400px ; height:100px ;">
+                           <div class="overlay">
+                              <div class="text"><a href="{{i.get_url}}"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+                           </div>
+                        </div>
+                            <p>{{ i.name }}</p>
+                            <p>Rs: {{ i.price }}</p>
+                            <a href="{% url 'addcart' i.id %}" class="buy_now_button" style="position: relative; top: -60px; float: right;">Order Now</a>
+                     </div>
+                     {% endfor %}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      <!-- gallery section end -->
+      <div class="footer_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-3 col-sm-6">
+                  <h3 class="useful_text">About</h3>
+                  <p class="footer_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u</p>
+               </div>
+               <div class="col-lg-3 col-sm-6">
+                  <h3 class="useful_text">Menu</h3>
+                  <div class="footer_menu">
+                     <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-sm-6">
+                  <h1 class="useful_text">Useful Link</h1>
+                  <p class="dummy_text">Adipiscing Elit, sed do Eiusmod Tempor incididunt </p>
+               </div>
+               <div class="col-lg-3 col-sm-6">
+                  <h1 class="useful_text">Contact Us</h1>
+                  <div class="location_text">
+                     <ul>
+                        <li>
+                           <a href="#">
+                           <i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_10">Address : Loram Ipusm</span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#">
+                           <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">Call : +01 1234567890</span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#">
+                           <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">Email : demo@gmail.com</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- footer section end -->
+      
+   </body>
+</html>
+{% endblock %}
